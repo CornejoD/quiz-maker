@@ -6,49 +6,57 @@ var questionIndex = 0;
 
 var startbutton = document.querySelector(".start-button");
 
+var questionEl = document.querySelector(".question")
+var choicesEl = document.querySelector(".choices")
+
 var questions = [
     {
-        title: "Question 1",
+        title: "What is the correct way to link JavaScript File?",
         choices: [
-            "Choice 1",
-            "Choice 2",
-            "Choice 3"
+            "<script href= 'file.js'>",
+            "<script src='.js'>",
+            "<script name='file.js'>",
+            "<script src='file.js'>"
+        ],
+        answer: "Choice 4"
+    },
+    {
+        title: "How do you display content in JavaScript?",
+        choices: [
+            "console.log('content');",
+            "print('content')",
+            "cout << 'content';",
+            "echo 'content';"
         ],
         answer: "Choice 1"
     },
     {
-        title: "Question 2",
+        title: "How to comment in JavaScript?",
         choices: [
-            "Choice 1",
-            "Choice 2",
-            "Choice 3"
+            "/Comment",
+            "<Comment>",
+            "//Comment",
+            "*Comment"
         ],
-        answer: "Choice 1"
+        answer: "Choice 3"
     },
     {
-        title: "Question 3",
+        title: "How do you declare a variable in JavaScript?",
         choices: [
-            "Choice 1",
-            "Choice 2",
-            "Choice 3"
+            "v variableName;",
+            "var variable Name;",
+            "variable varibleName;",
+            "string variableName;"
         ],
-        answer: "Choice 1"
+        answer: "Choice 2"
     },
     {
-        title: "Question 4",
+        title: "Which sign does jQuery use as a shortcut?",
         choices: [
-            "Choice 1",
-            "Choice 2",
-            "Choice 3"
-        ],
-        answer: "Choice 1"
-    },
-    {
-        title: "Question 5",
-        choices: [
-            "Choice 1",
-            "Choice 2",
-            "Choice 3"
+            "$",
+            "?",
+            "%",
+            "!"
         ],
         answer: "Choice 1"
     },
@@ -61,10 +69,11 @@ function startQuiz(){
 
     time = setInterval(function(){
         timerCount--
-        timerEl.textContent = timerCount;
+        timerEl.textContent = "Time: " + timerCount;
 
         if(timerCount <= 0){
-            endQuiz()
+            // endQuiz()
+            return;
         }
     }, 1000)
 
@@ -73,8 +82,12 @@ function startQuiz(){
 }
 
 function displayQuestions() {
+    console.log("Function Works")
     var currentQuestion = questions[questionIndex];
     // loop over choices
+
+    questionEl.textContent = currentQuestion.title;
+
   for (var i = 0; i < currentQuestion.choices.length; i++) {
     // create new button for each choice
     var choice = currentQuestion.choices[i];
